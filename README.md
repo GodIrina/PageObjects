@@ -1,1 +1,1 @@
-# PageObjects [![Build status](https://ci.appveyor.com/api/projects/status/4tq77qghuxtlhtdh?svg=true)](https://ci.appveyor.com/project/GodIrina/pageobjects)
+# Page Objects [![Build status](https://ci.appveyor.com/api/projects/status/4tq77qghuxtlhtdh?svg=true)](https://ci.appveyor.com/project/GodIrina/pageobjects)
