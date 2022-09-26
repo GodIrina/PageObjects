@@ -3,20 +3,19 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import lombok.val;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class DashboardPage {
+    private SelenideElement heading = $(byText("Ваши карты"));
     private ElementsCollection cards = $$(".list__item div");
-    private ElementsCollection cardsButtons = $$("[data-test-id='action-deposit']");
-    private SelenideElement ErrorNotification = $("[data-test-id='error-notification']");
     private final String balanceStart = "баланс: ";
     private final String balanceFinish = " р.";
 
-    private SelenideElement head = $("[data-test-id='dashboard']");
-
     public DashboardPage() {
-        head.shouldBe(visible);
+        heading.shouldBe(visible);
     }
 
     public int getCardBalance(int id) {
@@ -31,12 +30,8 @@ public class DashboardPage {
         return Integer.parseInt(value);
     }
 
-    public TransferPage chooseCardForTransfer(int id) {
-        cardsButtons.get(id).click();
-        return new TransferPage();
-    }
-
-    public void getErrorNotification() {
-        ErrorNotification.shouldBe(visible);
+    public TransferMoneyPage cardRefill(int id) {
+        cards.get(id).$(byText("Пополнить")).click();
+        return new TransferMoneyPage();
     }
 }
